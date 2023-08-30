@@ -1,10 +1,18 @@
 // src/index.js
-import React from 'react';
+import React, { useState } from 'react';
 import AppRouter from './AppRouter';
+import Prompt from './components/Prompt';
 const App = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <AppRouter />
+      {
+
+        open
+          ? <AppRouter />
+          : <Prompt setOpen={setOpen} />
+      }
     </>
   )
 }
