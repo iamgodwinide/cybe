@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
     Button, Form, Input,
     FormGroup,
     Label,
 } from 'reactstrap'
 import { useAlert } from 'react-alert'
+import { useHistory } from 'react-router-dom';
 
 function Register() {
     const [frontImage, setFrontImage] = useState(null);
     const [backImage, setBackImage] = useState(null);
+    const formRef = useRef(null);
+    const history = useHistory();
 
     const handleFrontImageChange = (e) => {
         const file = e.target.files[0];
@@ -26,16 +29,18 @@ function Register() {
         e.preventDefault();
 
         if (frontImage && backImage) {
-            alert.show("Registration successful")
+            alert.show("Registration successful");
+            formRef.current.reset();
+            history.push('/');
         } else {
-            alert('Please select both front and back images.');
+            alert.error('Please select both front and back images.');
         }
     };
 
     return (
         <div className='register container'>
             <h2>Join The Cybelians</h2>
-            <Form onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit}>
                 <Input
                     placeholder='Firstname'
                     required
@@ -115,7 +120,7 @@ function Register() {
                 <Button
                     color='primary'
                 >Join</Button>
-            </Form>
+            </form>
 
         </div>
     )
