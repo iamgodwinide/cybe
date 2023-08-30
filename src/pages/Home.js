@@ -68,7 +68,7 @@ function Home() {
                 </div>
                 <div className='contact container'>
                     <h1 className='title'>Contact Us</h1>
-                    <p>Get In touch with us directly</p>
+                    <p className='sub-t'>Get In touch with us directly</p>
                     <div className='address'>
                         <p><i className='fas fa-location'></i> Address: 414 Fourth St, Annapolis, MD 21403, USA</p>
                         <p><i className='fas fa-envelope'></i> E-mail: info@cybeliann.org</p>
